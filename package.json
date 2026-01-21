@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "A React UI Library by zsq.",
   "keywords": [],
-  "homepage": "https://github.com/trontium/trontium-ui#readme",
+  "homepage": "https://github.com/trontium/react-ui-library-tutorial#readme",
   "bugs": {
-    "url": "https://github.com/trontium/trontium-ui/issues"
+    "url": "https://github.com/trontium/react-ui-library-tutorial/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trontium/trontium-ui.git"
+    "url": "git+https://github.com/trontium/react-ui-library-tutorial.git"
   },
   "license": "ISC",
   "main": "lib/index.js",

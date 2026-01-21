@@ -2,13 +2,13 @@
 
 A React UI Library by zsq.
 
-[🚀 在线预览](https://trontium.github.io/trontium-ui)
+[🚀 在线预览](https://trontium.github.io/react-ui-library-tutorial)
 
 🚆 本地预览
 
 ```bash
-git clone git@github.com:trontium/trontium-ui.git
-cd trontium-ui
+git clone git@github.com:trontium/react-ui-library-tutorial.git
+cd react-ui-library-tutorial
 pnpm install
 pnpm start
 ```
