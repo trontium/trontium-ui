@@ -10,4 +10,6 @@ export { default as Tabs } from './tabs';
 
 export { default as Input } from './input';
 
+export { default as Form } from './form';
+
 /* PLOP_INJECT_EXPORT */

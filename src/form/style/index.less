@@ -1,0 +1,44 @@
+@import '../../styles/index.less';
+
+@form-prefix-cls: trontium-form;
+@form-item-prefix-cls: trontium-form-item;
+
+.@{form-prefix-cls} {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+}
+
+.@{form-item-prefix-cls} {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+
+  &-label {
+    flex-grow: 0;
+    width: 100px; /* simple fixed width for basic integration */
+    margin-right: 12px;
+    text-align: right;
+    line-height: 32px; /* align with input height */
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  &-control {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    
+    /* Ensure inputs allow width 100% */
+    .trontium-input-wrapper,
+    .trontium-input {
+        width: 100%;
+    }
+  }
+}
