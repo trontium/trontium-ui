@@ -1,0 +1,58 @@
+.trontium-tabs {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.trontium-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+.trontium-tabs-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 14px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin-right: 2px;
+  color: rgba(0, 0, 0, 0.85);
+}
+.trontium-tabs-tab:hover {
+  color: #1890ff;
+}
+.trontium-tabs-tab-active {
+  color: #1890ff;
+  font-weight: 500;
+}
+.trontium-tabs-tab-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background-color: #1890ff;
+  transform: scaleX(1);
+  transition: transform 0.3s;
+}
+.trontium-tabs-tab-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.trontium-tabs-tab-disabled:hover {
+  color: rgba(0, 0, 0, 0.25);
+}
+.trontium-tabs-content {
+  flex: 1;
+}
+.trontium-tabs-tabpane {
+  outline: none;
+}

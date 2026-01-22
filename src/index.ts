@@ -6,4 +6,6 @@ export { default as Modal } from './modal';
 
 export { default as Tree } from './tree';
 
+export { default as Tabs } from './tabs';
+
 /* PLOP_INJECT_EXPORT */
