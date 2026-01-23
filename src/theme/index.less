@@ -1,4 +1,4 @@
-:root {
+.light-theme-vars() {
   --trontium-color-primary: #1890ff;
   --trontium-color-primary-hover: #40a9ff;
   --trontium-color-primary-active: #096dd9;
@@ -13,6 +13,10 @@
   --trontium-color-border: #d9d9d9;
   
   --trontium-color-white: #fff;
+}
+
+:root {
+  .light-theme-vars();
 }
 
 .dark-theme-vars() {
@@ -31,9 +35,7 @@
 }
 
 /* 
-   1. Explicit Dark Mode:
-      Driven by Dumi's toggle which adds data-prefers-color-scheme="dark"
-      or generic .dark class.
+   1. Explicit Dark Mode: Driven by Dumi's toggle
 */
 html[data-prefers-color-scheme="dark"],
 :root[data-prefers-color-scheme="dark"],
@@ -43,12 +45,11 @@ html[data-prefers-color-scheme="dark"],
 }
 
 /* 
-   2. System Dark Mode (Auto):
-      If the system is dark, we apply dark vars UNLESS 
-      the user has explicitly toggled to light (data-prefers-color-scheme="light").
+   2. Explicit Light Mode: Override Dark Mode if user toggled light 
+      (Specificy 0-1-1 beats :root 0-1-0)
 */
-@media (prefers-color-scheme: dark) {
-  html:not([data-prefers-color-scheme="light"]) {
-    .dark-theme-vars();
-  }
+html[data-prefers-color-scheme="light"],
+:root[data-prefers-color-scheme="light"],
+[data-prefers-color-scheme="light"] {
+  .light-theme-vars();
 }
