@@ -20,29 +20,30 @@ export interface FieldEntity {
   };
 }
 
-export interface FormInstance {
+export interface FormInstance<Values = any> {
   getFieldValue: (name: NamePath) => any;
-  getFieldsValue: () => any;
-  setFieldsValue: (values: any) => void;
+  getFieldsValue: () => Values;
+  setFieldsValue: (values: Partial<Values>) => void;
   getFieldError: (name: NamePath) => string[]; // Added this
-  validateFields: () => Promise<any>;
+  validateFields: (nameList?: NamePath[]) => Promise<Values>;
   submit: () => void;
   getInternalHooks: () => {
     registerField: (entity: FieldEntity) => () => void;
     setInitialValues: (values: any, init: boolean) => void;
-    setCallbacks: (callbacks: Callbacks) => void;
+    setCallbacks: (callbacks: Callbacks<Values>) => void;
   };
 }
 
-export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+export interface FormProps<Values = any>
+  extends Omit<FormHTMLAttributes<HTMLFormElement>, 'onFinish'> {
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
-  form?: FormInstance;
-  initialValues?: Record<string, any>;
-  onFinish?: (values: any) => void;
+  form?: FormInstance<Values>;
+  initialValues?: Partial<Values>;
+  onFinish?: (values: Values) => void;
   onFinishFailed?: (errorInfo: any) => void;
-  onValuesChange?: (changedValues: any, values: any) => void;
+  onValuesChange?: (changedValues: any, values: Values) => void;
 }
 
 export interface FormItemProps {

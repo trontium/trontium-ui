@@ -66,13 +66,32 @@ const FormItem: FC<FormItemProps> = ({
 
   const errors = name && getFieldError ? getFieldError(name) : [];
 
+  const domId = name;
+  const errorId = `${domId}_error`;
+  const hasError = errors.length > 0;
+
+  // Accessibility props for the child input
+  if (name && React.isValidElement(childNode)) {
+    // Use childNode here as it's already cloned with value/trigger
+    const a11yProps = {
+      id: domId,
+      'aria-invalid': hasError ? 'true' : 'false',
+      'aria-describedby': hasError ? errorId : undefined,
+    };
+    childNode = React.cloneElement(childNode as ReactElement<any>, a11yProps);
+  }
+
   return (
     <div className={classNames(prefixCls, className)} style={style}>
-      {label && <div className={`${prefixCls}-label`}>{label}</div>}
+      {label && (
+        <label htmlFor={domId} className={`${prefixCls}-label`}>
+          {label}
+        </label>
+      )}
       <div className={`${prefixCls}-control`}>
         {childNode}
-        {errors.length > 0 && (
-          <div className={`${prefixCls}-error`} style={{ color: 'red' }}>
+        {hasError && (
+          <div id={errorId} className={`${prefixCls}-error`} style={{ color: 'red' }} role="alert">
             {errors.join(', ')}
           </div>
         )}

@@ -6,28 +6,28 @@ import type { ValidateError } from 'async-validator';
 
 import type { Callbacks, FieldEntity, FormInstance, NamePath } from './interface';
 
-export class FormStore {
-  private store: Record<string, any> = {};
+export class FormStore<Values = any> {
+  private store: Partial<Values> = {};
   private errors: Record<string, ValidateError[]> = {};
   private fieldEntities: FieldEntity[] = [];
-  private callbacks: Callbacks = {};
-  private initialValues: Record<string, any> = {};
+  private callbacks: Callbacks<Values> = {};
+  private initialValues: Partial<Values> = {};
 
   // constructor() {}
 
   public getFieldsValue = () => {
-    return { ...this.store };
+    return { ...this.store } as Values;
   };
 
   public getFieldValue = (name: NamePath) => {
-    return this.store[name];
+    return (this.store as any)[name];
   };
 
   public getFieldError = (name: NamePath): string[] => {
     return this.errors[name] ? this.errors[name].map((e) => e.message || '') : [];
   };
 
-  public setFieldsValue = (newStore: Record<string, any>) => {
+  public setFieldsValue = (newStore: Partial<Values>) => {
     this.store = {
       ...this.store,
       ...newStore,
@@ -38,7 +38,7 @@ export class FormStore {
 
     // Notify onValuesChange callback
     if (this.callbacks.onValuesChange) {
-      this.callbacks.onValuesChange(newStore, this.store);
+      this.callbacks.onValuesChange(newStore, this.store as Values);
     }
   };
 
@@ -51,14 +51,14 @@ export class FormStore {
     });
   };
 
-  public setCallbacks = (newCallbacks: Callbacks) => {
+  public setCallbacks = (newCallbacks: Callbacks<Values>) => {
     this.callbacks = {
       ...this.callbacks,
       ...newCallbacks,
     };
   };
 
-  public setInitialValues = (initialValues: Record<string, any>, init: boolean) => {
+  public setInitialValues = (initialValues: Partial<Values>, init: boolean) => {
     this.initialValues = initialValues || {};
     if (init) {
       this.store = { ...this.initialValues };
@@ -68,19 +68,23 @@ export class FormStore {
   public registerField = (entity: FieldEntity) => {
     this.fieldEntities.push(entity);
     const name = entity.getNamePath();
-    if (name && this.store[name] === undefined && this.initialValues[name] !== undefined) {
-      this.store[name] = this.initialValues[name];
+    if (
+      name &&
+      (this.store as any)[name] === undefined &&
+      (this.initialValues as any)[name] !== undefined
+    ) {
+      (this.store as any)[name] = (this.initialValues as any)[name];
     }
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== entity);
       if (name) {
-        delete this.store[name];
+        delete (this.store as any)[name];
         delete this.errors[name];
       }
     };
   };
 
-  public validateFields = async (): Promise<any> => {
+  public validateFields = async (): Promise<Values> => {
     const validatorDescriptor: any = {};
     const values: Record<string, any> = {};
 
@@ -136,7 +140,7 @@ export class FormStore {
       });
   };
 
-  public getForm = (): FormInstance => ({
+  public getForm = (): FormInstance<Values> => ({
     getFieldValue: this.getFieldValue,
     getFieldsValue: this.getFieldsValue,
     setFieldsValue: this.setFieldsValue,
@@ -151,14 +155,14 @@ export class FormStore {
   });
 }
 
-export const useForm = (form?: FormInstance) => {
-  const formRef = useRef<FormInstance | null>(null);
+export const useForm = <Values = any>(form?: FormInstance<Values>): [FormInstance<Values>] => {
+  const formRef = useRef<FormInstance<Values> | null>(null);
 
   if (!formRef.current) {
     if (form) {
       formRef.current = form;
     } else {
-      const formStore = new FormStore();
+      const formStore = new FormStore<Values>();
       formRef.current = formStore.getForm();
     }
   }
