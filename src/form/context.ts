@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-export const FormContext = createContext<any>({});
+import type { FormInstance } from './interface';
+
+export const FormContext = createContext<FormInstance>({} as FormInstance);

@@ -1,3 +1,5 @@
+import './theme/index.less';
+
 export { default as Alert } from './alert';
 export { default as Button } from './button';
 export { default as VirtualList } from './virtual-list';

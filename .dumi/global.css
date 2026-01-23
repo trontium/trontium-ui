@@ -1,0 +1,36 @@
+:root {
+  --trontium-color-primary: #1890ff;
+  --trontium-color-primary-hover: #40a9ff;
+  --trontium-color-primary-active: #096dd9;
+  --trontium-color-text: rgba(0, 0, 0, 0.85);
+  --trontium-color-text-secondary: rgba(0, 0, 0, 0.45);
+  --trontium-color-text-disabled: rgba(0, 0, 0, 0.25);
+  --trontium-color-bg-container: #ffffff;
+  --trontium-color-bg-disabled: #f5f5f5;
+  --trontium-color-border: #d9d9d9;
+  --trontium-color-white: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --trontium-color-primary: #177ddc;
+    --trontium-color-primary-hover: #1765ad;
+    --trontium-color-primary-active: #165996;
+    --trontium-color-text: rgba(255, 255, 255, 0.85);
+    --trontium-color-text-secondary: rgba(255, 255, 255, 0.45);
+    --trontium-color-text-disabled: rgba(255, 255, 255, 0.3);
+    --trontium-color-bg-container: #141414;
+    --trontium-color-bg-disabled: rgba(255, 255, 255, 0.08);
+    --trontium-color-border: #434343;
+  }
+}
+html[data-prefers-color-scheme="dark"] {
+  --trontium-color-primary: #177ddc;
+  --trontium-color-primary-hover: #1765ad;
+  --trontium-color-primary-active: #165996;
+  --trontium-color-text: rgba(255, 255, 255, 0.85);
+  --trontium-color-text-secondary: rgba(255, 255, 255, 0.45);
+  --trontium-color-text-disabled: rgba(255, 255, 255, 0.3);
+  --trontium-color-bg-container: #141414;
+  --trontium-color-bg-disabled: rgba(255, 255, 255, 0.08);
+  --trontium-color-border: #434343;
+}

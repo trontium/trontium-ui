@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--trontium-color-text);
   font-size: 14px;
   font-variant: tabular-nums;
   line-height: 1.5715;
@@ -22,25 +22,25 @@
 .trontium-message-notice-content {
   display: inline-block;
   padding: 10px 16px;
-  background: #fff;
+  background: var(--trontium-color-bg-container);
   border-radius: 2px;
   box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
   pointer-events: all;
 }
 .trontium-message-success .trontium-message-notice-content {
-  background: #fff;
+  background: var(--trontium-color-bg-container);
 }
 .trontium-message-error .trontium-message-notice-content {
-  background: #fff;
+  background: var(--trontium-color-bg-container);
 }
 .trontium-message-warning .trontium-message-notice-content {
-  background: #fff;
+  background: var(--trontium-color-bg-container);
 }
 .trontium-message-info .trontium-message-notice-content {
-  background: #fff;
+  background: var(--trontium-color-bg-container);
 }
 .trontium-message-loading .trontium-message-notice-content {
-  background: #fff;
+  background: var(--trontium-color-bg-container);
 }
 .trontium-message-custom-content {
   display: flex;
