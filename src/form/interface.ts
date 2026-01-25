@@ -24,6 +24,7 @@ export interface FormInstance<Values = any> {
   getFieldValue: (name: NamePath) => any;
   getFieldsValue: () => Values;
   setFieldsValue: (values: Partial<Values>) => void;
+  resetFields: (names?: NamePath[]) => void;
   getFieldError: (name: NamePath) => string[]; // Added this
   validateFields: (nameList?: NamePath[]) => Promise<Values>;
   submit: () => void;

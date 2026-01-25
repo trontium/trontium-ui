@@ -42,6 +42,24 @@ export class FormStore<Values = any> {
     }
   };
 
+  public resetFields = (names?: NamePath[]) => {
+    const store = this.store as Record<string, any>;
+    const resetNames = names || Object.keys(store);
+
+    resetNames.forEach((name) => {
+      const initialValue = (this.initialValues as any)[name];
+      if (initialValue !== undefined) {
+        store[name] = initialValue;
+      } else {
+        delete store[name];
+      }
+      // Clean errors
+      delete this.errors[name];
+    });
+
+    this.updateFieldEntities(resetNames);
+  };
+
   private updateFieldEntities = (names: NamePath[]) => {
     this.fieldEntities.forEach((entity) => {
       const name = entity.getNamePath();
@@ -144,6 +162,7 @@ export class FormStore<Values = any> {
     getFieldValue: this.getFieldValue,
     getFieldsValue: this.getFieldsValue,
     setFieldsValue: this.setFieldsValue,
+    resetFields: this.resetFields,
     getFieldError: this.getFieldError,
     validateFields: this.validateFields,
     submit: this.submit,
