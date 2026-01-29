@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@trontium/ui": ["../../packages/ui/src/index.ts"],
+      "@@/*": [".dumi/tmp/*"]
+    }
+  },
+  "include": [".dumirc.ts", "docs", "../../packages/ui/src"],
+  "exclude": ["node_modules"]
+}

@@ -3,26 +3,28 @@
 /.vscode
 
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 
 /site
 # testing
-/coverage
+coverage
 
 # production
-/build
-/dist
-/lib
-/esm
+build
+dist
+lib
+esm
 /doc-site
-/types
+types
 
 # dumi
 .dumi/tmp
 .dumi/tmp-test
 .dumi/tmp-production
+**/.dumi
+**/.umi
 .umi
 .umi-production
 .env.local

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "paths": {
+      "@trontium/ui": ["src/index.ts"]
+    }
+  },
+  "include": ["src", "typings.d.ts", "jest.setup.ts"],
+  "exclude": ["node_modules", "lib", "esm", "dist", "**/__test__"]
+}
