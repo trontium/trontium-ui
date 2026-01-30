@@ -50,7 +50,7 @@ export const VirtualList = <T extends any>(props: VirtualListProps<T>) => {
             const actualIndex = startIndex + index;
             // The key is critical for React to reuse nodes correctly
             return (
-              <div key={itemKey(item)} style={{ height: itemHeight }}>
+              <div key={itemKey(item, actualIndex)} style={{ height: itemHeight }}>
                 {children(item, actualIndex)}
               </div>
             );

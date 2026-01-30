@@ -3,9 +3,10 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import { VirtualList } from '../virtual-list';
 import type { TableProps } from './interface';
 import './style';
+
+import { VirtualList } from '../virtual-list';
 
 function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
   const { className, style, columns = [], dataSource = [], rowKey = 'key', scroll } = props;
@@ -35,7 +36,10 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
   if (scroll && scroll.y) {
     return (
       <div className={classNames(prefixCls, className)} style={style}>
-        <div className={`${prefixCls}-header`} style={{ display: 'flex', borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
+        <div
+          className={`${prefixCls}-header`}
+          style={{ display: 'flex', borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}
+        >
           {columns.map((col, index) => (
             <div
               key={col.key || col.dataIndex || index}
@@ -52,8 +56,11 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
           itemHeight={55} // Default roughly matches padding 16px + text
           itemKey={getRowKey}
         >
-          {(record, index) => (
-            <div className={`${prefixCls}-row`} style={{ display: 'flex', borderBottom: '1px solid #f0f0f0' }}>
+          {(record: RecordType, index: number) => (
+            <div
+              className={`${prefixCls}-row`}
+              style={{ display: 'flex', borderBottom: '1px solid #f0f0f0' }}
+            >
               {columns.map((col, colIndex) => {
                 const cellKey = col.key || col.dataIndex || colIndex;
                 let value = col.dataIndex ? (record as any)[col.dataIndex] : undefined;
@@ -61,7 +68,11 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
                   value = col.render(value, record, index);
                 }
                 return (
-                  <div key={cellKey} className={`${prefixCls}-cell`} style={{ flex: 1, padding: 16, width: col.width }}>
+                  <div
+                    key={cellKey}
+                    className={`${prefixCls}-cell`}
+                    style={{ flex: 1, padding: 16, width: col.width }}
+                  >
                     {value}
                   </div>
                 );

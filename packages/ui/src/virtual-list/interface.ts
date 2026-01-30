@@ -11,7 +11,7 @@ export interface VirtualListProps<T> {
   /** 数据源 */
   data: T[];
   /** 获取每一项的唯一 key */
-  itemKey: (item: T) => React.Key;
+  itemKey: (item: T, index: number) => React.Key;
   /** 渲染每一项的函数 */
   children: (item: T, index: number) => ReactNode;
 }
