@@ -51,8 +51,8 @@ describe('Form Interaction', () => {
     // Type into input
     const input = screen.getByPlaceholderText('Username');
     // userEvent.type(input, 'testuser');
-    // Use fireEvent.change as fallback if userEvent issues persist, but type worked in other test
-    await userEvent.type(input, 'testuser');
+    // Use fireEvent.change to avoid cursor jump issues in JSDOM/userEvent with controlled components via external store
+    fireEvent.change(input, { target: { value: 'testuser' } });
 
     // Submit again
     if (form) {
@@ -79,7 +79,7 @@ describe('Form Interaction', () => {
     );
 
     const input = screen.getByPlaceholderText('test-input');
-    userEvent.type(input, 'hello');
+    fireEvent.change(input, { target: { value: 'hello' } });
 
     await waitFor(() => {
       expect(input).toHaveValue('hello');

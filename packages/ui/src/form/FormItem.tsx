@@ -44,8 +44,10 @@ const FormItem: FC<FormItemProps> = ({
 
   if (name && React.isValidElement(children)) {
     const value = getFieldValue ? getFieldValue(name) : undefined;
+    const controlledValue = value === undefined && valuePropName === 'value' ? '' : value;
+
     const childProps = {
-      [valuePropName]: value,
+      [valuePropName]: controlledValue,
       [trigger]: (e: any) => {
         const newValue =
           e && e.target && typeof e.target === 'object' && valuePropName in e.target
