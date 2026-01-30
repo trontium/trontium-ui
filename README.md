@@ -2,28 +2,45 @@
 
 A React UI Library by zsq.
 
-[🚀 在线预览](https://trontium.github.io/react-ui-library-tutorial)
+## 💻 预览
 
-🚆 本地预览
+### 🚀 在线预览
+
+> 文档地址：[https://trontium.github.io/react-ui-library-tutorial/](https://trontium.github.io/react-ui-library-tutorial/)
+>
+> _注：部署依赖 GitHub Actions，代码推送后需等待数分钟更新。_
+
+### 🚆 本地预览
 
 ```bash
+# 1. 克隆项目
 git clone git@github.com:trontium/react-ui-library-tutorial.git
+
+# 2. 进入项目目录
 cd react-ui-library-tutorial
+
+# 3. 安装依赖 (需提前安装 Node.js 和 pnpm)
 pnpm install
+
+# 4. 启动开发服务器
 pnpm start
 ```
 
-按顺序执行完命令后，即可在 localhost:3000 端口看到以下内容：
+启动成功后，访问 [http://localhost:3000](http://localhost:3000) 即可查看文档。
 
-![preview](https://raw.githubusercontent.com/worldzhao/blog/master/images/rc-lib-v1-1.jpg)
+## 🛠️ 项目脚本 (Scripts)
 
-## 概览
+在根目录下可执行以下命令：
 
-本系列文章主要包含以下内容：
+| 命令                                  | 说明                                     |
+| ------------------------------------- | ---------------------------------------- |
+| `pnpm start`                          | 启动本地文档开发服务器 (port: 3000)      |
+| `pnpm build:site`                     | 构建文档站点 (输出构建产物)              |
+| `pnpm build:ui`                       | 构建 UI 组件库产物 (lib/esm)             |
+| `pnpm test:ui`                        | 运行组件单元测试                         |
+| `pnpm --filter @trontium/ui run size` | 检查组件库 JS 包体积与 Tree-shaking 情况 |
 
-- 项目初始化: 组件库前期开发准备工作。`eslint`/`commit lint`/`typescript`等等；
-- 开发阶段: 使用 [dumi](https://d.umijs.org/zh-CN) 进行开发调试以及文档编写；
-- 打包阶段: 输出~~`umd`~~/`cjs`/`esm`产物并支持按需加载；
-- 组件测试: 使用`@testing-library/react`及其相关生态进行组件测试；
-- 发布 npm: 编写脚本完成发布或直接使用 [np](https://www.npmjs.com/package/np) 发布；
-- 部署文档站点: 使用 Github Pages 以及 Github Actions 完成文档站点自动部署。
+## ✨ 特性更新
+
+- **虚拟滚动 (Virtual Scroll)**: 为 Table 组件集成了虚拟列表支持，可流畅渲染万级数据。
+- **工程化基建**: 完善了 ESLint/Prettier/Commitlint 规范，新增包体积监控 (Size Limit)。
