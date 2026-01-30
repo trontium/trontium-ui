@@ -2,6 +2,10 @@
   "name": "@trontium/ui",
   "version": "1.0.0",
   "description": "A React UI Library by zsq.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trontium/trontium-ui.git"
+  },
   "main": "lib/index.js",
   "module": "esm/index.js",
   "typings": "lib/index.d.ts",
@@ -13,6 +17,7 @@
     "build": "npm run clean && npm run build:types && gulp",
     "build:types": "tsc -p tsconfig.build.json && cpr lib esm",
     "clean": "rimraf lib esm dist",
+    "lint": "eslint --ext .ts,.tsx src",
     "size": "size-limit",
     "test": "jest"
   },

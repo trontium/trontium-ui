@@ -26,11 +26,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build UI Library
+      - name: Type Check & Build UI
         run: pnpm build:ui
+
+      - name: Lint Code
+        run: pnpm lint:ui
+
+      - name: Run Units Test with Coverage
+        run: pnpm --filter @trontium/ui test -- --coverage
 
       - name: Build Documentation Site
         run: pnpm build:site
-
-      - name: Run UI Tests
-        run: pnpm test:ui

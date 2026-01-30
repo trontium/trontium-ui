@@ -6,7 +6,7 @@ A React UI Library by zsq.
 
 ### 🚀 在线预览
 
-> 文档地址：[https://trontium.github.io/react-ui-library-tutorial/](https://trontium.github.io/react-ui-library-tutorial/)
+> 文档地址：[https://trontium.github.io/trontium-ui/](https://trontium.github.io/trontium-ui/)
 >
 > _注：部署依赖 GitHub Actions，代码推送后需等待数分钟更新。_
 
@@ -14,10 +14,10 @@ A React UI Library by zsq.
 
 ```bash
 # 1. 克隆项目
-git clone git@github.com:trontium/react-ui-library-tutorial.git
+git clone git@github.com:trontium/trontium-ui.git
 
 # 2. 进入项目目录
-cd react-ui-library-tutorial
+cd trontium-ui
 
 # 3. 安装依赖 (需提前安装 Node.js 和 pnpm)
 pnpm install
