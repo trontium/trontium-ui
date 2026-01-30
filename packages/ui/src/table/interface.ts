@@ -12,4 +12,7 @@ export interface TableProps<RecordType> {
   rowKey?: string | ((record: RecordType) => string);
   className?: string;
   style?: React.CSSProperties;
+  scroll?: {
+    y?: number;
+  };
 }
