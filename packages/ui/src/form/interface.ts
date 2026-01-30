@@ -2,7 +2,7 @@ import type { CSSProperties, FormHTMLAttributes, ReactNode } from 'react';
 
 import type { Rule } from 'async-validator';
 
-export type NamePath = string;
+export type NamePath = string | number | (string | number)[];
 
 export interface Callbacks<Values = any> {
   onValuesChange?: (changedValues: any, values: Values) => void;

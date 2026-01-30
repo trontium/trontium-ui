@@ -3,18 +3,31 @@ name: github pages
 on:
   push:
     branches:
-      - master # default branch
+      - master
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm i pnpm -g
-      - run: pnpm install
+      - uses: actions/checkout@v3
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
       - run: pnpm build:site
+      
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./doc-site
+          publish_dir: apps/docs/doc-site

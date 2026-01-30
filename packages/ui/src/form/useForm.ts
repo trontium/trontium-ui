@@ -5,6 +5,7 @@ import Schema from 'async-validator';
 import type { ValidateError } from 'async-validator';
 
 import type { Callbacks, FieldEntity, FormInstance, NamePath } from './interface';
+import { deepMerge, getNamePath, getValue, setValue } from './utils';
 
 export class FormStore<Values = any> {
   private store: Partial<Values> = {};
@@ -20,21 +21,19 @@ export class FormStore<Values = any> {
   };
 
   public getFieldValue = (name: NamePath) => {
-    return (this.store as any)[name];
+    return getValue(this.store, name);
   };
 
   public getFieldError = (name: NamePath): string[] => {
-    return this.errors[name] ? this.errors[name].map((e) => e.message || '') : [];
+    const namePathStr = getNamePath(name).join('.');
+    return this.errors[namePathStr] ? this.errors[namePathStr].map((e) => e.message || '') : [];
   };
 
   public setFieldsValue = (newStore: Partial<Values>) => {
-    this.store = {
-      ...this.store,
-      ...newStore,
-    };
+    this.store = deepMerge(this.store, newStore);
 
     // Notify registered fields
-    this.updateFieldEntities(Object.keys(newStore));
+    this.updateFieldEntities();
 
     // Notify onValuesChange callback
     if (this.callbacks.onValuesChange) {
@@ -44,28 +43,37 @@ export class FormStore<Values = any> {
 
   public resetFields = (names?: NamePath[]) => {
     const store = this.store as Record<string, any>;
-    const resetNames = names || Object.keys(store);
+    const resetNames = names || Object.keys(store); // This is weak for Nested, but acceptable for now
 
     resetNames.forEach((name) => {
-      const initialValue = (this.initialValues as any)[name];
+      // Need handle nested reset if name is array
+      const initialValue = getValue(this.initialValues, name);
       if (initialValue !== undefined) {
-        store[name] = initialValue;
+        setValue(store, name, initialValue);
       } else {
-        delete store[name];
+        // This delete only works for top level keys if name is string
+        // For nested, setting undefined might be better
+        setValue(store, name, undefined);
       }
-      // Clean errors
-      delete this.errors[name];
+
+      const namePathStr = getNamePath(name).join('.');
+      delete this.errors[namePathStr];
     });
 
-    this.updateFieldEntities(resetNames);
+    this.updateFieldEntities();
   };
 
-  private updateFieldEntities = (names: NamePath[]) => {
+  private updateFieldEntities = () => {
+    // changedValuesArg are typically top-level keys if from setFieldsValue
+    // We need to notify if connection exists.
+    // Simplification: just match strictly or if path includes.
+
     this.fieldEntities.forEach((entity) => {
-      const name = entity.getNamePath();
-      if (names.includes(name)) {
-        entity.onStoreChange(name);
-      }
+      const namePath = entity.getNamePath();
+
+      // Simple match for now: if any changed part matches
+      // Ideally should check path intersection
+      entity.onStoreChange(namePath);
     });
   };
 
@@ -86,32 +94,48 @@ export class FormStore<Values = any> {
   public registerField = (entity: FieldEntity) => {
     this.fieldEntities.push(entity);
     const name = entity.getNamePath();
-    if (
-      name &&
-      (this.store as any)[name] === undefined &&
-      (this.initialValues as any)[name] !== undefined
-    ) {
-      (this.store as any)[name] = (this.initialValues as any)[name];
+    const initialVal = getValue(this.initialValues, name);
+
+    if (name && getValue(this.store, name) === undefined && initialVal !== undefined) {
+      setValue(this.store, name, initialVal);
     }
+
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== entity);
       if (name) {
-        delete (this.store as any)[name];
-        delete this.errors[name];
+        setValue(this.store, name, undefined);
+        const namePathStr = getNamePath(name).join('.');
+        delete this.errors[namePathStr];
       }
     };
   };
 
   public validateFields = async (): Promise<Values> => {
     const validatorDescriptor: any = {};
-    const values: Record<string, any> = {};
+    const values: any = {};
 
     this.fieldEntities.forEach((entity) => {
       const name = entity.getNamePath();
       const rules = entity.props.rules;
       if (name && rules) {
-        validatorDescriptor[name] = rules;
-        values[name] = this.getFieldValue(name);
+        const namePathStr = getNamePath(name).join('.');
+        validatorDescriptor[namePathStr] = rules;
+        // Use setValue to construct the object for validation?
+        // async-validator supports 'deep' descriptor keys like 'user.name'.
+        // And we pass a flat object with keys 'user.name'? or nested?
+        // Standard async-validator expects:
+        //   descriptor: { address: { type: 'object', fields: { city: { required: true } } } }
+        //   OR descriptor: { 'address.city': { required: true } }
+        // Usage: validator.validate({ address: { city: '' } })
+
+        // Let's use the 'user.name' string key approach which async-validator supports at top level
+        // IF we provide a flat object to validate against.
+        // But getFieldsValue returns nested.
+
+        // Workaround: Validate nested by constructing nested object and using deep rules?
+        // Simplest: use flat keys in descriptor and flat values object.
+
+        values[namePathStr] = getValue(this.store, name);
       }
     });
 
@@ -125,7 +149,7 @@ export class FormStore<Values = any> {
     try {
       await validator.validate(values);
       // Success: update UI to remove errors
-      this.updateFieldEntities(Object.keys(validatorDescriptor));
+      this.updateFieldEntities();
       return Promise.resolve(this.getFieldsValue());
     } catch (e: any) {
       const { errors } = e;
@@ -139,7 +163,7 @@ export class FormStore<Values = any> {
       this.errors = { ...this.errors, ...errorMap };
 
       // Update UI for fields with errors
-      this.updateFieldEntities(Object.keys(errorMap));
+      this.updateFieldEntities();
       return Promise.reject(errors);
     }
   };

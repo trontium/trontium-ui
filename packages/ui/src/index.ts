@@ -15,3 +15,4 @@ export { default as Input } from './input';
 export { default as Form } from './form';
 
 /* PLOP_INJECT_EXPORT */
+export { default as Table } from './table';

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { FormContext } from './context';
 import type { FieldEntity, FormItemProps } from './interface';
+import { getNamePath, setValue } from './utils';
 
 const FormItem: FC<FormItemProps> = ({
   className,
@@ -52,7 +53,9 @@ const FormItem: FC<FormItemProps> = ({
             : e;
 
         if (setFieldsValue) {
-          setFieldsValue({ [name]: newValue });
+          const newStore = {};
+          setValue(newStore, name, newValue);
+          setFieldsValue(newStore);
         }
 
         const originTrigger = (children as ReactElement<any>).props[trigger];
@@ -66,7 +69,7 @@ const FormItem: FC<FormItemProps> = ({
 
   const errors = name && getFieldError ? getFieldError(name) : [];
 
-  const domId = name;
+  const domId = name ? getNamePath(name).join('_') : undefined;
   const errorId = `${domId}_error`;
   const hasError = errors.length > 0;
 
