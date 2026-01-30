@@ -12,3 +12,7 @@ A Basic Table component.
 ### Basic Usage
 
 <code src="./demo/basic.tsx"></code>
+
+### Virtual Scroll
+
+<code src="./demo/virtual-scroll.tsx"></code>
