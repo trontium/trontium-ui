@@ -3,7 +3,6 @@ import React from 'react';
 import Form from '..';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 // Assuming Input component is available
 import Button from '../../button';
@@ -70,7 +69,7 @@ describe('Form Interaction', () => {
   test('should support specific field validation update', async () => {
     // This tests the field-level update optimization indirectly
     // If it failed, typing would likely not update the value in UI if not handled correctly
-    const { container } = render(
+    render(
       <Form>
         <Form.Item name="test">
           <Input placeholder="test-input" />

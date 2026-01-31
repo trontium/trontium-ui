@@ -10,7 +10,7 @@ const data = Array.from({ length: 100 }).map((_, i) => ({ id: i, text: `Item ${i
 
 describe('VirtualList Component', () => {
   it('renders correctly', () => {
-    const { getByRole, getByText } = render(
+    const { getByRole } = render(
       <VirtualList
         height={100}
         itemHeight={20}
