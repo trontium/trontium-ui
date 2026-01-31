@@ -12,7 +12,7 @@
 - 🎨 **主题定制**: 基于 CSS Variables 的动态主题引擎，内置深色模式 (Dark Mode) 支持。
 - ⚡ **高性能**:
   - 支持 **Tree Shaking** (ES Module + sideEffects 优化)。
-  - 内置 **Virtual Scroll** (虚拟滚动) 解决方案，轻松应对万级数据渲染。
+  - 内置 **Virtual Scroll** (虚拟滚动) 解决方案，支持 **表格固定列 (Fixed Columns)** 混合布局，轻松应对万级数据渲染。
 - 🧪 **测试驱动**: 完备的单元测试 (Jest + Testing Library)，保障代码稳定性。
 - 📦 **工程化**:
   - Monorepo (pnpm workspace) 管理。
