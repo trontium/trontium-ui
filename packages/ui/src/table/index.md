@@ -17,6 +17,10 @@ A Basic Table component.
 
 <code src="./demo/virtual-scroll.tsx"></code>
 
+### Fixed Columns & Virtual Scroll
+
+<code src="./demo/fixed-columns.tsx"></code>
+
 ### Complex Usage with Custom Render & Actions
 
 <code src="./demo/complex.tsx"></code>

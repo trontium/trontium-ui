@@ -4,6 +4,7 @@ export interface ColumnType<RecordType> {
   dataIndex?: string;
   render?: (value: any, record: RecordType, index: number) => React.ReactNode;
   width?: number | string;
+  fixed?: 'left' | 'right';
 }
 
 export interface TableProps<RecordType> {
