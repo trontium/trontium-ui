@@ -6,6 +6,12 @@
     "type": "git",
     "url": "git+https://github.com/trontium/trontium-ui.git"
   },
+  "sideEffects": [
+    "dist/*",
+    "esm/**/style/*",
+    "lib/**/style/*",
+    "*.less"
+  ],
   "main": "lib/index.js",
   "module": "esm/index.js",
   "typings": "lib/index.d.ts",

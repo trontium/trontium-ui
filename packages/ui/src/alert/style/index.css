@@ -1,0 +1,23 @@
+.trontium-alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  margin-bottom: 16px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.5715;
+}
+.trontium-alert-info {
+  background-color: var(--trontium-color-primary);
+}
+.trontium-alert-positive {
+  background-color: var(--trontium-color-success);
+}
+.trontium-alert-warning {
+  background-color: var(--trontium-color-warning);
+}
+.trontium-alert-negative {
+  background-color: var(--trontium-color-error);
+}

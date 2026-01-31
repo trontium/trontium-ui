@@ -9,13 +9,29 @@
   --trontium-color-bg-disabled: #f5f5f5;
   --trontium-color-border: #d9d9d9;
   --trontium-color-white: #fff;
+  --trontium-color-success: #52c41a;
+  --trontium-color-warning: #faad14;
+  --trontium-color-error: #ff4d4f;
+  --trontium-color-error-hover: #ff7875;
+  --trontium-color-error-active: #d9363e;
+  --trontium-color-mask: rgba(0, 0, 0, 0.45);
+  --trontium-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  --trontium-color-item-hover-bg: #f5f5f5;
+  --trontium-color-item-selected-bg: #e6f7ff;
+  --trontium-table-header-bg: #fafafa;
+  --trontium-table-border: #f0f0f0;
+  --trontium-table-row-hover-bg: #fafafa;
+  --trontium-scrollbar-track: #f1f1f1;
+  --trontium-scrollbar-thumb: #ccc;
+  --trontium-scrollbar-thumb-hover: #555;
+  --trontium-color-primary-shadow: rgba(24, 144, 255, 0.2);
 }
 /* 
    1. Explicit Dark Mode: Driven by Dumi's toggle
 */
-html[data-prefers-color-scheme="dark"],
-:root[data-prefers-color-scheme="dark"],
-[data-prefers-color-scheme="dark"],
+html[data-prefers-color-scheme='dark'],
+:root[data-prefers-color-scheme='dark'],
+[data-prefers-color-scheme='dark'],
 .dark {
   --trontium-color-primary: #177ddc;
   --trontium-color-primary-hover: #1765ad;
@@ -26,14 +42,30 @@ html[data-prefers-color-scheme="dark"],
   --trontium-color-bg-container: #141414;
   --trontium-color-bg-disabled: rgba(255, 255, 255, 0.08);
   --trontium-color-border: #434343;
+  --trontium-color-success: #49aa19;
+  --trontium-color-warning: #d89614;
+  --trontium-color-error: #a61d24;
+  --trontium-color-error-hover: #d9363e;
+  --trontium-color-error-active: #58181c;
+  --trontium-color-mask: rgba(0, 0, 0, 0.45);
+  --trontium-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.45), 0 6px 16px 0 rgba(0, 0, 0, 0.35), 0 9px 28px 8px rgba(0, 0, 0, 0.2);
+  --trontium-color-item-hover-bg: rgba(255, 255, 255, 0.08);
+  --trontium-color-item-selected-bg: #111b26;
+  --trontium-table-header-bg: #1d1d1d;
+  --trontium-table-border: #303030;
+  --trontium-table-row-hover-bg: rgba(255, 255, 255, 0.08);
+  --trontium-scrollbar-track: #2c2c2c;
+  --trontium-scrollbar-thumb: #4e4e4e;
+  --trontium-scrollbar-thumb-hover: #6b6b6b;
+  --trontium-color-primary-shadow: rgba(23, 125, 220, 0.2);
 }
 /* 
    2. Explicit Light Mode: Override Dark Mode if user toggled light 
       (Specificy 0-1-1 beats :root 0-1-0)
 */
-html[data-prefers-color-scheme="light"],
-:root[data-prefers-color-scheme="light"],
-[data-prefers-color-scheme="light"] {
+html[data-prefers-color-scheme='light'],
+:root[data-prefers-color-scheme='light'],
+[data-prefers-color-scheme='light'] {
   --trontium-color-primary: #1890ff;
   --trontium-color-primary-hover: #40a9ff;
   --trontium-color-primary-active: #096dd9;
@@ -44,4 +76,20 @@ html[data-prefers-color-scheme="light"],
   --trontium-color-bg-disabled: #f5f5f5;
   --trontium-color-border: #d9d9d9;
   --trontium-color-white: #fff;
+  --trontium-color-success: #52c41a;
+  --trontium-color-warning: #faad14;
+  --trontium-color-error: #ff4d4f;
+  --trontium-color-error-hover: #ff7875;
+  --trontium-color-error-active: #d9363e;
+  --trontium-color-mask: rgba(0, 0, 0, 0.45);
+  --trontium-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  --trontium-color-item-hover-bg: #f5f5f5;
+  --trontium-color-item-selected-bg: #e6f7ff;
+  --trontium-table-header-bg: #fafafa;
+  --trontium-table-border: #f0f0f0;
+  --trontium-table-row-hover-bg: #fafafa;
+  --trontium-scrollbar-track: #f1f1f1;
+  --trontium-scrollbar-thumb: #ccc;
+  --trontium-scrollbar-thumb-hover: #555;
+  --trontium-color-primary-shadow: rgba(24, 144, 255, 0.2);
 }

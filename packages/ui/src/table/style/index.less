@@ -10,22 +10,22 @@
   }
 
   &-thead {
-    background: #fafafa;
+    background: var(--trontium-table-header-bg);
   }
 
   &-cell {
     padding: 16px 16px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--trontium-table-border);
     transition: background 0.3s;
   }
 
   &-row:hover &-cell {
-    background: #fafafa;
+    background: var(--trontium-table-row-hover-bg);
   }
 
   &-empty {
     padding: 32px;
     text-align: center;
-    color: #999;
+    color: var(--trontium-color-text-secondary);
   }
 }

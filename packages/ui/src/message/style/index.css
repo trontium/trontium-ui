@@ -7,7 +7,7 @@
   font-variant: tabular-nums;
   line-height: 1.5715;
   list-style: none;
-  font-feature-settings: 'tnum', "tnum";
+  font-feature-settings: 'tnum', 'tnum';
   position: fixed;
   top: 8px;
   left: 0;
@@ -24,7 +24,7 @@
   padding: 10px 16px;
   background: var(--trontium-color-bg-container);
   border-radius: 2px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--trontium-shadow-base);
   pointer-events: all;
 }
 .trontium-message-success .trontium-message-notice-content {

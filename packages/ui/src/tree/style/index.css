@@ -37,10 +37,10 @@
   transition: background-color 0.3s;
 }
 .trontium-tree-title:hover {
-  background-color: #f5f5f5;
+  background-color: var(--trontium-color-item-hover);
 }
 .trontium-tree-node-selected > .trontium-tree-title {
-  background-color: #e6f7ff;
+  background-color: var(--trontium-color-item-active);
 }
 .trontium-tree-list {
   padding-left: 18px;

@@ -1,8 +1,29 @@
-@popupPrefix: happy-alert;
+@alert-prefix-cls: trontium-alert;
 
-.@{popupPrefix} {
-  padding: 20px;
-  color: white;
-  background: white;
-  border-radius: 3px;
+.@{alert-prefix-cls} {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  margin-bottom: 16px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.5715;
+
+  &-info {
+    background-color: var(--trontium-color-primary);
+  }
+
+  &-positive {
+    background-color: var(--trontium-color-success);
+  }
+
+  &-warning {
+    background-color: var(--trontium-color-warning);
+  }
+
+  &-negative {
+    background-color: var(--trontium-color-error);
+  }
 }

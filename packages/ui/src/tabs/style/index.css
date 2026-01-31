@@ -44,11 +44,11 @@
   transition: transform 0.3s;
 }
 .trontium-tabs-tab-disabled {
-  color: rgba(0, 0, 0, 0.25);
+  color: var(--trontium-color-text-disabled);
   cursor: not-allowed;
 }
 .trontium-tabs-tab-disabled:hover {
-  color: rgba(0, 0, 0, 0.25);
+  color: var(--trontium-color-text-disabled);
 }
 .trontium-tabs-content {
   flex: 1;

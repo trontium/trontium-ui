@@ -20,7 +20,7 @@
   left: 0;
   z-index: 1000;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: var(--trontium-color-mask);
   pointer-events: auto;
 }
 .trontium-modal-wrap {
@@ -30,7 +30,7 @@
   margin: 0 auto;
   background-color: var(--trontium-color-bg-container);
   border-radius: 2px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--trontium-shadow-base);
   pointer-events: auto;
 }
 .trontium-modal-header {
