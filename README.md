@@ -78,11 +78,3 @@ export default () => (
 | `pnpm build`                          | 构建所有产物 (文档 site + UI lib/esm)    |
 | `pnpm test:ui`                        | 运行组件单元测试                         |
 | `pnpm --filter @trontium/ui run size` | 检查组件库 JS 包体积与 Tree-shaking 情况 |
-
-## 🤝 贡献代码
-
-欢迎提交 Issue 或 Pull Request！请确保在提交前运行 `pnpm test:ui` 通过所有测试。
-
-## 📄 License
-
-MIT © [zsq](https://github.com/trontium)

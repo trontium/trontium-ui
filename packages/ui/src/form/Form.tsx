@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { FormContext } from './context';
 import FormItem from './FormItem';
 import type { FormProps } from './interface';
+import './style';
 import { useForm } from './useForm';
 
 const Form: FC<FormProps> & { Item: typeof FormItem; useForm: typeof useForm } = ({

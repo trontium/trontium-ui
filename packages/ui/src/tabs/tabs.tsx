@@ -40,7 +40,11 @@ const Tabs: FC<TabsProps> & { TabPane: FC<TabPaneProps> } = ({
 
   const getChildKey = (child: React.ReactElement<any>, index: number) => {
     // @ts-ignore
-    return child.key || index;
+    const key = child.key;
+    if (typeof key === 'string' && key.includes('.$')) {
+      return key.replace('.$', '');
+    }
+    return key || index;
   };
 
   const renderNav = () => {

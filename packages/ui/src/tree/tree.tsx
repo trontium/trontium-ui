@@ -13,14 +13,25 @@ const Tree: FC<TreeProps> = ({
   style,
   treeData = [],
   defaultExpandedKeys = [],
+  expandedKeys: propExpandedKeys,
   defaultSelectedKeys = [],
   selectedKeys: propSelectedKeys,
   multiple = false,
   onSelect,
   onExpand,
 }) => {
-  const [expandedKeys, setExpandedKeys] = useState<(string | number)[]>(defaultExpandedKeys);
-  const [selectedKeys, setSelectedKeys] = useState<(string | number)[]>(defaultSelectedKeys);
+  const [expandedKeys, setExpandedKeys] = useState<(string | number)[]>(
+    propExpandedKeys || defaultExpandedKeys,
+  );
+  const [selectedKeys, setSelectedKeys] = useState<(string | number)[]>(
+    propSelectedKeys || defaultSelectedKeys,
+  );
+
+  useEffect(() => {
+    if (propExpandedKeys) {
+      setExpandedKeys(propExpandedKeys);
+    }
+  }, [propExpandedKeys]);
 
   useEffect(() => {
     if (propSelectedKeys) {
@@ -29,12 +40,15 @@ const Tree: FC<TreeProps> = ({
   }, [propSelectedKeys]);
 
   const handleExpand = (key: string | number, node: TreeDataNode) => {
-    const newExpandedKeys = expandedKeys.includes(key)
+    const isExpanded = expandedKeys.includes(key);
+    const newExpandedKeys = isExpanded
       ? expandedKeys.filter((k) => k !== key)
       : [...expandedKeys, key];
 
-    setExpandedKeys(newExpandedKeys);
-    onExpand?.(newExpandedKeys, { expanded: !expandedKeys.includes(key), node });
+    if (!propExpandedKeys) {
+      setExpandedKeys(newExpandedKeys);
+    }
+    onExpand?.(newExpandedKeys, { expanded: !isExpanded, node });
   };
 
   const handleSelect = (e: React.MouseEvent, key: string | number, node: TreeDataNode) => {

@@ -13,23 +13,27 @@ export interface MessageListRef {
 const MessageList = forwardRef<MessageListRef, any>((props, ref) => {
   const [notices, setNotices] = useState<MessageArgsProps[]>([]);
 
-  useImperativeHandle(ref, () => ({
-    add: (notice: MessageArgsProps) => {
-      setNotices((prev) => {
-        const filtered = notice.key ? prev.filter((n) => n.key !== notice.key) : prev;
-        return [
-          ...filtered,
-          {
-            ...notice,
-            key: notice.key || `trontium-message-${Date.now()}-${Math.random()}`,
-          },
-        ];
-      });
-    },
-    remove: (key: React.Key) => {
-      setNotices((prev) => prev.filter((notice) => notice.key !== key));
-    },
-  }));
+  useImperativeHandle(
+    ref,
+    () => ({
+      add: (notice: MessageArgsProps) => {
+        setNotices((prev) => {
+          const filtered = notice.key ? prev.filter((n) => n.key !== notice.key) : prev;
+          return [
+            ...filtered,
+            {
+              ...notice,
+              key: notice.key || `trontium-message-${Date.now()}-${Math.random()}`,
+            },
+          ];
+        });
+      },
+      remove: (key: React.Key) => {
+        setNotices((prev) => prev.filter((notice) => notice.key !== key));
+      },
+    }),
+    [],
+  );
 
   const handleRemove = (key: React.Key) => {
     setNotices((prev) => prev.filter((notice) => notice.key !== key));

@@ -26,6 +26,10 @@ export interface TreeProps {
    */
   defaultExpandedKeys?: (string | number)[];
   /**
+   * @description 展开的节点 (受控)
+   */
+  expandedKeys?: (string | number)[];
+  /**
    * @description 选中节点
    */
   selectedKeys?: (string | number)[];

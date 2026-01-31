@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import type { AnchorButtonProps, ButtonProps, NativeButtonProps } from './interface';
+import './style';
 
 const prefixCls = 'trontium-btn';
 

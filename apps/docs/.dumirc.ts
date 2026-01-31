@@ -24,15 +24,4 @@ export default defineConfig({
   },
   exportStatic: {},
   forkTSChecker: {},
-  extraBabelPlugins: [
-    [
-      'import',
-      {
-        libraryName: '@trontium/ui',
-        libraryDirectory: '',
-        customStyleName: (name: string) =>
-          path.resolve(__dirname, `../../packages/ui/src/${name}/style/index.ts`),
-      },
-    ],
-  ],
 });

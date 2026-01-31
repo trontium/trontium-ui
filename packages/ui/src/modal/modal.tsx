@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import type { ModalProps } from './interface';
+import './style';
 
 import Button from '../button';
 

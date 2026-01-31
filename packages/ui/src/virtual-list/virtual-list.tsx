@@ -5,6 +5,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import type { VirtualListProps } from './interface';
+import './style';
 
 export const VirtualList = <T extends any>(props: VirtualListProps<T>) => {
   const { height, itemHeight, data, itemKey, children, style, className, ...restProps } = props;

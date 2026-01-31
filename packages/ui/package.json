@@ -10,6 +10,7 @@
     "dist/*",
     "esm/**/style/*",
     "lib/**/style/*",
+    "src/**/style/*",
     "*.less"
   ],
   "main": "lib/index.js",
