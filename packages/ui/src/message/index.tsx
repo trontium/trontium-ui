@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import type { MessageArgsProps, NoticeType } from './interface';
 import type { MessageListRef } from './message-list';
@@ -17,7 +17,8 @@ function getMessageInstance(callback: (instance: MessageListRef) => void) {
   const div = document.createElement('div');
   document.body.appendChild(div);
 
-  ReactDOM.render(
+  const root = createRoot(div);
+  root.render(
     <MessageList
       ref={(instance) => {
         if (instance) {
@@ -26,7 +27,6 @@ function getMessageInstance(callback: (instance: MessageListRef) => void) {
         }
       }}
     />,
-    div,
   );
 }
 
