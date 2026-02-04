@@ -15,6 +15,7 @@
     "prepare": "husky install",
     "release": "pnpm build:ui && changeset publish",
     "start": "pnpm --filter docs-site start",
+    "start:builder": "pnpm --filter builder dev",
     "test:ui": "pnpm --filter @trontium/ui test",
     "version": "changeset version"
   },

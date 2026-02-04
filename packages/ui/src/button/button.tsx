@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import classNames from 'classnames';
 
@@ -7,7 +7,10 @@ import './style';
 
 const prefixCls = 'trontium-btn';
 
-const Button: React.FC<ButtonProps & (NativeButtonProps | AnchorButtonProps)> = (props) => {
+const Button = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps & (NativeButtonProps | AnchorButtonProps)
+>((props, ref) => {
   const {
     type = 'default',
     size = 'middle',
@@ -43,6 +46,7 @@ const Button: React.FC<ButtonProps & (NativeButtonProps | AnchorButtonProps)> = 
   if (type === 'link') {
     return (
       <a
+        ref={ref as React.Ref<HTMLAnchorElement>}
         className={classes}
         style={style}
         onClick={handleClick}
@@ -56,6 +60,7 @@ const Button: React.FC<ButtonProps & (NativeButtonProps | AnchorButtonProps)> = 
 
   return (
     <button
+      ref={ref as React.Ref<HTMLButtonElement>}
       {...(restProps as NativeButtonProps)}
       type={htmlType}
       className={classes}
@@ -67,6 +72,6 @@ const Button: React.FC<ButtonProps & (NativeButtonProps | AnchorButtonProps)> = 
       {children && <span>{children}</span>}
     </button>
   );
-};
+});
 
 export default Button;
