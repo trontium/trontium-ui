@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunkdocs_site=self.webpackChunkdocs_site||[]).push([[904],{45038:function(t,a,n){n.r(a),n.d(a,{demos:function(){return d}});var e=n(96832),d={}},74653:function(t,a,n){n.r(a),n.d(a,{demos:function(){return d}});var e=n(96832),d={}},88779:function(t,a,n){n.r(a),n.d(a,{texts:function(){return e}});const e=[{value:"\u4F7F\u7528 npm \u6216 yarn \u5B89\u88C5",paraId:0,tocIndex:1},{value:`npm install @zzzzw/happy-ui
+"use strict";(self.webpackChunkdocs_site=self.webpackChunkdocs_site||[]).push([[904],{56974:function(t,a,n){n.r(a),n.d(a,{demos:function(){return d}});var e=n(44194),d={}},40415:function(t,a,n){n.r(a),n.d(a,{demos:function(){return d}});var e=n(44194),d={}},63172:function(t,a,n){n.r(a),n.d(a,{texts:function(){return e}});const e=[{value:"\u4F7F\u7528 npm \u6216 yarn \u5B89\u88C5",paraId:0,tocIndex:1},{value:`npm install @zzzzw/happy-ui
 `,paraId:1,tocIndex:1},{value:`yarn add @zzzzw/happy-ui
 `,paraId:2,tocIndex:1},{value:`import Alert from '@zzzzw/happy-ui/es/alert';
 // \u624B\u52A8\u6309\u9700\u52A0\u8F7D js
@@ -25,4 +25,4 @@ ReactDOM.render(<Alert kind="warning">\u8FD9\u662F\u4E00\u6761\u8B66\u544A\u63D0
     ]
   ]
 }
-`,paraId:9,tocIndex:3}]},67988:function(t,a,n){n.r(a),n.d(a,{texts:function(){return e}});const e=[]}}]);
+`,paraId:9,tocIndex:3}]},70630:function(t,a,n){n.r(a),n.d(a,{texts:function(){return e}});const e=[]}}]);
